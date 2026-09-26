@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
+  --font-heading: var(--font-arima);
+  --color-teal: #05a59d;
+  --color-navy: #053f7e;
+  --color-ink: #212b27;
+  --color-muted: #435058;
+  --color-soft: #6c6c6c;
+  --color-form: #f6fbf9;
+  --color-card: #f1f2ee;
+  --color-line: #eae8df;
+  --color-placeholder: #a0a0a0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-poppins), sans-serif;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+.font-heading {
+  font-family: var(--font-arima), serif;
+}
+
+.marquee-track {
+  animation: marquee 42s linear infinite;
+}
+
+.marquee-track-reverse {
+  animation: marquee 48s linear infinite reverse;
+}
+
+.marquee-track:hover,
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
