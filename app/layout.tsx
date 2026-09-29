@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Arima, Poppins } from "next/font/google";
+import { PpcCapture } from "@/components/ppc-capture";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${arima.variable} ${poppins.variable}`}>
       <body className="min-h-full max-w-full overflow-x-clip bg-white antialiased">
+        <PpcCapture />
         <SiteHeader />
         <div className="max-w-full overflow-x-clip">{children}</div>
         <SiteFooter />

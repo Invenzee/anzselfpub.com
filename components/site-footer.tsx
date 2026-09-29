@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CONTACT_EMAIL } from "@/components/hero-actions";
 
 export function SiteFooter() {
   return (
@@ -24,6 +25,11 @@ export function SiteFooter() {
             <p>
               <a href="tel:4564812546664" className="hover:text-teal">
                 4564812546664
+              </a>
+            </p>
+            <p>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-teal">
+                {CONTACT_EMAIL}
               </a>
             </p>
             <p>

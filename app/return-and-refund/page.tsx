@@ -107,6 +107,10 @@ export default function ReturnRefundPage() {
           or call{" "}
           <a href="tel:4564812546664" className="text-teal">
             4564812546664
+          </a>{" "}
+          or email{" "}
+          <a href="mailto:info@amzselfpub.com" className="text-teal">
+            info@amzselfpub.com
           </a>
           . Include your name, the project reference, and the reason. We reply with the amount, if
           any, that can be returned. These rules sit alongside the{" "}

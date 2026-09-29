@@ -111,6 +111,10 @@ export default function PrivacyPage() {
           <a href="tel:4564812546664" className="text-teal">
             4564812546664
           </a>
+          . Email{" "}
+          <a href="mailto:info@amzselfpub.com" className="text-teal">
+            info@amzselfpub.com
+          </a>
           . Website www.amzselfpub.com.
         </p>
       </section>

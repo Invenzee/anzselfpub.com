@@ -2,14 +2,26 @@
 
 import Image from "next/image";
 import { FormEvent, useState } from "react";
+import { submitLead } from "@/lib/submit-lead";
 
 export function Connect() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
-    event.currentTarget.reset();
+    setError("");
+    setPending(true);
+    try {
+      await submitLead(event.currentTarget, "Connect With Leading Book Publishers");
+      setSent(true);
+      event.currentTarget.reset();
+    } catch {
+      setError("We could not send that just now. Please email info@amzselfpub.com.");
+    } finally {
+      setPending(false);
+    }
   }
 
   return (
@@ -51,14 +63,20 @@ export function Connect() {
             </label>
             <button
               type="submit"
-              className="inline-flex h-12 shrink-0 items-center gap-3 rounded-lg bg-navy px-5 text-sm font-medium text-white"
+              disabled={pending}
+              className="inline-flex h-12 shrink-0 items-center gap-3 rounded-lg bg-navy px-5 text-sm font-medium text-white disabled:opacity-70"
             >
-              Subscribe
+              {pending ? "Sending..." : "Subscribe"}
               <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/70 text-xs">
                 ↗
               </span>
             </button>
           </div>
+          {error ? (
+            <p className="mt-4 text-sm text-red-700" role="alert">
+              {error}
+            </p>
+          ) : null}
           {sent ? (
             <p className="mt-4 text-sm text-navy" role="status">
               You are on the list.

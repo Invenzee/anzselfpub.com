@@ -72,6 +72,10 @@ export default function TermsPage() {
           Send the request through the contact page or call{" "}
           <a href="tel:4564812546664" className="text-teal">
             4564812546664
+          </a>{" "}
+          or email{" "}
+          <a href="mailto:info@amzselfpub.com" className="text-teal">
+            info@amzselfpub.com
           </a>
           , and include your name, the project, and the concern. We will try to resolve it through
           a revision first. If a refund is approved, we confirm the amount in writing.

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export const PHONE_NUMBER = "4564812546664";
+export const CONTACT_EMAIL = "info@amzselfpub.com";
 
 export function HeroActions({ align = "start" }: { align?: "start" | "center" }) {
   return (

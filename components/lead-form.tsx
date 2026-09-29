@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { submitLead } from "@/lib/submit-lead";
 
 type LeadFormProps = {
   id?: string;
@@ -22,11 +23,22 @@ export function LeadForm({
   submitLabel = "Submit",
 }: LeadFormProps) {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
-    event.currentTarget.reset();
+    setError("");
+    setPending(true);
+    try {
+      await submitLead(event.currentTarget, title);
+      setSent(true);
+      event.currentTarget.reset();
+    } catch {
+      setError("We could not send that just now. Please email info@amzselfpub.com.");
+    } finally {
+      setPending(false);
+    }
   }
 
   return (
@@ -95,10 +107,16 @@ export function LeadForm({
 
       <button
         type="submit"
-        className={`mt-6 flex h-12 min-w-36 items-center justify-center rounded-lg bg-teal px-8 text-base font-medium text-white transition hover:bg-[#048f88] ${align === "center" ? "mx-auto" : ""}`}
+        disabled={pending}
+        className={`mt-6 flex h-12 min-w-36 items-center justify-center rounded-lg bg-teal px-8 text-base font-medium text-white transition hover:bg-[#048f88] disabled:opacity-70 ${align === "center" ? "mx-auto" : ""}`}
       >
-        {submitLabel}
+        {pending ? "Sending..." : submitLabel}
       </button>
+      {error ? (
+        <p className={`mt-4 text-sm text-red-700 ${align === "center" ? "text-center" : ""}`} role="alert">
+          {error}
+        </p>
+      ) : null}
       {sent ? (
         <p className="mt-4 text-center text-sm text-navy" role="status">
           Thanks. A publishing expert will be in touch.

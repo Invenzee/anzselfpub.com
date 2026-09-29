@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CONTACT_EMAIL } from "@/components/hero-actions";
 import { LeadForm } from "@/components/lead-form";
 import { PageBanner } from "@/components/page-banner";
 
@@ -26,6 +27,11 @@ export default function ContactUsPage() {
             <p className="mt-3">
               <a href="tel:4564812546664" className="text-navy">
                 4564812546664
+              </a>
+            </p>
+            <p className="mt-3">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-navy">
+                {CONTACT_EMAIL}
               </a>
             </p>
             <p className="mt-3">
