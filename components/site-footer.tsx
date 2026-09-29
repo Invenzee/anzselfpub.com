@@ -32,11 +32,6 @@ export function SiteFooter() {
                 {CONTACT_EMAIL}
               </a>
             </p>
-            <p>
-              <a href="https://www.amzselfpub.com" className="hover:text-teal">
-                www.amzselfpub.com
-              </a>
-            </p>
           </address>
         </div>
 

@@ -115,7 +115,7 @@ export default function PrivacyPage() {
           <a href="mailto:info@amzselfpub.com" className="text-teal">
             info@amzselfpub.com
           </a>
-          . Website www.amzselfpub.com.
+          .
         </p>
       </section>
     </LegalPage>

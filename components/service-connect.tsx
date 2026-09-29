@@ -4,8 +4,6 @@ import { FormEvent, useState } from "react";
 import Image from "next/image";
 import { submitLead } from "@/lib/submit-lead";
 
-const covers = ["/images/book-5.png", "/images/hero-book.png", "/images/book-4.png"];
-
 export function ServiceConnect({ title = "Connect With Leading Book Publishers in USA Today" }: { title?: string }) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
@@ -29,9 +27,19 @@ export function ServiceConnect({ title = "Connect With Leading Book Publishers i
   }
 
   return (
-    <section className="bg-teal text-white">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
-        <form onSubmit={onSubmit}>
+    <section className="relative overflow-hidden bg-teal text-white">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 hidden w-[46%] lg:block">
+        <Image
+          src="/images/editing-desk.jpg"
+          alt=""
+          fill
+          sizes="46vw"
+          className="object-cover object-right"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal from-0% via-teal via-[32%] to-transparent to-[72%]" />
+      </div>
+      <div className="relative mx-auto grid max-w-6xl px-5 py-14 sm:px-8 lg:grid-cols-[minmax(0,1fr)_40%] lg:py-16">
+        <form onSubmit={onSubmit} className="lg:pr-12">
           <h2 className="max-w-xl font-heading text-4xl leading-tight sm:text-5xl">{title}</h2>
           <div className="mt-8 grid gap-4 sm:max-w-xl sm:grid-cols-2">
             <input
@@ -78,19 +86,11 @@ export function ServiceConnect({ title = "Connect With Leading Book Publishers i
             </p>
           ) : null}
         </form>
-        <div className="flex items-end justify-center gap-3">
-          {covers.map((src, index) => (
-            <Image
-              key={src}
-              src={src}
-              alt=""
-              width={180}
-              height={260}
-              className="h-52 w-auto rounded-sm object-cover shadow-xl sm:h-64"
-              style={{ transform: `translateY(${index === 1 ? "-12px" : "0"})` }}
-            />
-          ))}
-        </div>
+        <div className="hidden lg:block" />
+      </div>
+      <div aria-hidden="true" className="relative h-64 lg:hidden">
+        <Image src="/images/editing-desk.jpg" alt="" fill right-0 sizes="100vw" className="object-cover object-left" />
+        <div className="absolute inset-0 bg-gradient-to-b from-teal from-0% via-teal/40 via-[22%] to-transparent" />
       </div>
     </section>
   );

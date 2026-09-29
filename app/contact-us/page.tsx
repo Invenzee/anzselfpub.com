@@ -34,11 +34,6 @@ export default function ContactUsPage() {
                 {CONTACT_EMAIL}
               </a>
             </p>
-            <p className="mt-3">
-              <a href="https://www.amzselfpub.com" className="text-navy">
-                www.amzselfpub.com
-              </a>
-            </p>
           </address>
         </div>
       </section>

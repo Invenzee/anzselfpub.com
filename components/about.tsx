@@ -42,10 +42,10 @@ export function About() {
           <div className="relative min-h-[420px]">
             <div className="absolute right-0 bottom-8 h-[78%] w-[78%] rounded-[48%_42%_46%_18%] bg-teal" />
             <Image
-              src="/images/about-book.png"
-              alt="Anna's Friends, The Assignment, by Yvonne G. Williams"
-              width={640}
-              height={760}
+              src="/images/second-sec.png"
+              alt="Stack of books resting on a laptop"
+              width={807}
+              height={682}
               className="relative z-10 h-auto w-full object-contain"
             />
           </div>
