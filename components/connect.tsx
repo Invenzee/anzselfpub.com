@@ -11,12 +11,14 @@ export function Connect() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
     setError("");
+    setSent(false);
     setPending(true);
     try {
-      await submitLead(event.currentTarget, "Connect With Leading Book Publishers");
+      await submitLead(form, "Connect With Leading Book Publishers");
+      form.reset();
       setSent(true);
-      event.currentTarget.reset();
     } catch {
       setError("We could not send that just now. Please email info@amzselfpub.com.");
     } finally {
